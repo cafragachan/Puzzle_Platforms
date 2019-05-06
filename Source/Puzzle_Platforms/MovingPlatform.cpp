@@ -26,7 +26,7 @@ void  AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (HasAuthority())
+	if (HasAuthority() && bIsActivated)
 	{
 		FVector Location = GetActorLocation();
 		float JourneyTravelled = (WorldStartLocation - Location).Size();
@@ -42,6 +42,12 @@ void  AMovingPlatform::Tick(float DeltaTime)
 		FVector Direction = WorldTargetLocation - Location;
 		Direction = Direction.GetSafeNormal() * DeltaTime * MoveSpeed;
 		this->SetActorLocation(Location + Direction);
+
 	}
 
+}
+
+void AMovingPlatform::SetMobility(bool isActive)
+{
+	isActive ? bIsActivated = true : bIsActivated = false;
 }

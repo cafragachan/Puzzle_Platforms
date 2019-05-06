@@ -30,8 +30,12 @@ public:
 	UPROPERTY(EditAnywhere, Meta = (MakeEditWidget = true))
 	FVector TargetLocation;
 
+	void SetMobility(bool isActive);
+
 private:
 
 	FVector WorldTargetLocation, WorldStartLocation;
+	bool bIsActivated = true;
+
 
 };
